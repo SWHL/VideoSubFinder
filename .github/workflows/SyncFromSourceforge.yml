@@ -1,0 +1,45 @@
+name: Sync From Sourceforge
+on:
+  push:
+    branches:
+      - '**'
+  schedule:
+    - cron: '0 1 * * *'  # 9点运行 1 + 8
+
+env:
+  REPO_SSH: git@github.com:SWHL/VideoSubFinder.git
+  CLONE_URL: ${{ github.event.repository.clone_url }}
+  USER_NAME: ${{ github.event.repository.owner.name }}
+  USER_EMAIL: ${{ github.event.repository.owner.email }}
+  SUBMMIT_BRANCH: main
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set SSH Environment
+        env:
+          DEPLOY_KEYS: ${{ secrets.DEPLOY_KEYS }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$DEPLOY_KEYS" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+          git config --global user.name $USER_NAME
+          git config --global user.email $USER_EMAIL
+
+      - name: Sync from sourceforge
+        run: |
+            git clone $REPO_SSH
+            cd VideoSubFinder
+            git remote add upstream https://git.code.sf.net/p/videosubfinder/src
+            git fetch upstream master
+            git checkout -b local_upstream upstream/master
+            git pull upstream master
+            git status
+            git rebase main
+            git checkout main
+
+            git merge local_upstream
+            git status
+            git push
