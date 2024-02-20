@@ -43,3 +43,4 @@ jobs:
             git merge local_upstream
             git status
             git push
+

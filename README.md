@@ -7,20 +7,22 @@
 
 
 ### Introduction
-- The main purpose of this program is to provide functionality for extract hardcoded subtitles (hardsub) from video.
+The main purpose of this program is to provide functionality for extract hardcoded subtitles (hardsub) from video.
 
-- It provides two main features:
-    1. Autodetection of frames with hardcoded text (hardsub) on video with saving info about timing positions.
-    2. Generation of cleared from background text images, which allows with usage of OCR programs (like FineReader, Subtitle Edit, Google Drive) to generate complete subtitles with original text and timing.
+It provides two main features:
 
-- For working of this program on Windows will be required "Microsoft Visual C++ Redistributable runtime libraries 2022":
+1. Autodetection of frames with hardcoded text (hardsub) on video with saving info about timing positions.
+
+2. Generation of cleared from background text images, which allows with usage of OCR programs (like FineReader, Subtitle Edit, Google Drive) to generate complete subtitles with original text and timing.
+
+For working of this program on Windows will be required "Microsoft Visual C++ Redistributable runtime libraries 2022":
 https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads
 
-- Latest versions were built and tested on:
-    - Windows 10 x64,
-    - Ubuntu 20.04.5 LTS,
-    - openSUSE Leap 15.4,
-    - Arch Linux (EndeavourOS Cassini Nova 03-2023)
+Latest versions were built and tested on:
+- Windows 10 x64,
+- Ubuntu 20.04.5 LTS,
+- openSUSE Leap 15.4,
+- Arch Linux (EndeavourOS Cassini Nova 03-2023)
 
 
 For faster support in case of bug fixes please contact me in:
